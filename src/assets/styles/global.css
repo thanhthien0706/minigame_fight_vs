@@ -1,0 +1,27 @@
+:root{
+    --green: rgb(65, 184, 131);
+    --light: rgb(243, 243, 243);
+    --dark :   #35495e;
+    --font : 'Odibee Sans', cursive;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-image: url('../images/background_galaxy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: var(--font);
+    font-size:16px;
+    width: 100%;
+}
