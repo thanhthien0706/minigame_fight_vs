@@ -1,7 +1,7 @@
 <template>
   <div class="screen">
     <h1>CUỘC CHIẾN GIỮA CÁC VÌ SAO</h1>
-    <form class="formInf" action="" >
+    <form class="formInf" action="" @submit.prevent >
       <div class="formInf__box formInf__name">
         <h3>Nhập tên của bạn</h3>
         <input
