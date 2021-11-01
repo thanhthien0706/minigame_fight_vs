@@ -15,6 +15,13 @@
     :setlevel="islevel"
     :startGame="startGameSet"
     :timeStart="timeStartGame"
+    @onEndGame="callEndGameScreen($event)"
+  />
+
+  <end-game-screen
+    v-if="statusMatch == 'endGame'"
+    :infShowEndGame="infPlayerEndGame"
+    @onStartAgain="onAgainGame"
   />
 </template>
 
@@ -22,6 +29,7 @@
 import MainScreen from "./components/MainScreen.vue";
 import SelectCharacter from "./components/SelectCharacter.vue";
 import AttackScreen from "./components/AttackScreen.vue";
+import EndGameScreen from "./components/EndGameScreen.vue";
 
 export default {
   name: "App",
@@ -29,6 +37,7 @@ export default {
     MainScreen,
     SelectCharacter,
     AttackScreen,
+    EndGameScreen,
   },
   data() {
     return {
@@ -50,6 +59,10 @@ export default {
       islevel: 0,
       startGameSet: true,
       timeStartGame: 3,
+      infPlayerEndGame: {
+        name: "",
+        timeEndGame: "",
+      },
     };
   },
   methods: {
@@ -75,11 +88,18 @@ export default {
       }, 3000);
       let timeCountDown = setInterval(() => {
         this.timeStartGame--;
-        if(this.timeStartGame <= 0) {
+        if (this.timeStartGame <= 0) {
           clearInterval(timeCountDown);
         }
-      },1000);
-
+      }, 1000);
+    },
+    callEndGameScreen(event) {
+      this.infPlayerEndGame.name = event.infWiner.name;
+      this.infPlayerEndGame.timeEndGame = event.timeGame;
+      this.statusMatch = "endGame";
+    },
+    onAgainGame() {
+      this.statusMatch = "default";
     },
   },
 };

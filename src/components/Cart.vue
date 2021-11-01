@@ -2,7 +2,7 @@
   <div
     class="screenCart"
     :class="{ active: isActive }"
-    @click="onClickActive(idCharacter,nameCharacter)"
+    @click="onClickActive(idCharacter, nameCharacter)"
   >
     <div class="item_character">
       <div
@@ -27,7 +27,6 @@ export default {
     nameCharacter: {
       type: String,
     },
-    
   },
   data() {
     return {
@@ -36,16 +35,19 @@ export default {
     };
   },
   methods: {
-    onClickActive(id , name) {
-        // console.log(id, name);
-      this.$emit("onShowCharacter", { idCharacterNew: id , nameCharacterNew: name });
+    onClickActive(id, name) {
+      // console.log(id, name);
+      this.$emit("onShowCharacter", {
+        idCharacterNew: id,
+        nameCharacterNew: name,
+      });
     },
-    onRemoveActive(){
-        this.isActive = false;
+    onRemoveActive() {
+      this.isActive = false;
     },
-    onAddActive(){
-        this.isActive = true;
-    }
+    onAddActive() {
+      this.isActive = true;
+    },
   },
 };
 </script>

@@ -47,7 +47,13 @@
     </div>
 
     <div class="box_enter_game">
-      <button class="btn_enter_game" :disabled="!character.length" @click="onClickGetCharacter">Chọn</button>
+      <button
+        class="btn_enter_game"
+        :disabled="!character.length"
+        @click="onClickGetCharacter"
+      >
+        Chọn
+      </button>
     </div>
   </div>
 </template>
@@ -85,9 +91,9 @@ export default {
           name: "trandan's",
         },
       ],
-      bot:{
-          idCharacter : "",
-          nameCharacter : "",
+      bot: {
+        idCharacter: "",
+        nameCharacter: "",
       },
       character: [],
       isImage: 0,
@@ -116,7 +122,6 @@ export default {
         this.character.length === 1 &&
         this.character[0].idCharacterNew != card.idCharacterNew
       ) {
-
         this.$refs[`cart_${this.character[0].idCharacterNew}`].onRemoveActive();
         this.$refs[`cart_${card.idCharacterNew}`].onAddActive();
         this.character[0] = card;
@@ -124,14 +129,19 @@ export default {
         this.isName = this.character[0].nameCharacterNew;
       }
     },
-    onClickGetCharacter(){
-        const randomBot = Math.round(randonFunction(0, this.characters.length-1));
+    onClickGetCharacter() {
+      const randomBot = Math.round(
+        randonFunction(0, this.characters.length - 1)
+      );
 
-        this.bot.idCharacter = this.characters[randomBot].id;
-        this.bot.nameCharacter = this.characters[randomBot].name;
+      this.bot.idCharacter = this.characters[randomBot].id;
+      this.bot.nameCharacter = this.characters[randomBot].name;
 
-        this.$emit('onGetCharacter', {infCharacter: this.character[0] , infBot: this.bot});
-    }
+      this.$emit("onGetCharacter", {
+        infCharacter: this.character[0],
+        infBot: this.bot,
+      });
+    },
   },
 };
 </script>

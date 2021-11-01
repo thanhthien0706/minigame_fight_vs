@@ -167,6 +167,9 @@ export default {
       },
       timeClock: "00:00",
       hits: 0,
+      winer: {
+        name: "",
+      },
     };
   },
   methods: {
@@ -205,19 +208,23 @@ export default {
         if (numberSkill == 2) {
           this.onMinusBloodBot(this.randomDamage(4, 6));
           this.hits++;
-          setTimeout(() => {
-            this.onMinusBloodPlayer(this.randomDamage(4, 6));
-            this.hits++;
-          }, 2000);
+          if (this.bot.botHeart > 0) {
+            setTimeout(() => {
+              this.onMinusBloodPlayer(this.randomDamage(4, 6));
+              this.hits++;
+            }, 2000);
+          }
         }
 
         if (numberSkill == 3) {
           this.onMinusBloodBot(this.randomDamage(10, 15));
           this.hits++;
-          setTimeout(() => {
-            this.onMinusBloodPlayer(this.randomDamage(10, 15));
-            this.hits++;
-          }, 2000);
+          if (this.bot.botHeart > 0) {
+            setTimeout(() => {
+              this.onMinusBloodPlayer(this.randomDamage(10, 15));
+              this.hits++;
+            }, 500);
+          }
         }
 
         if (numberSkill == 4) {
@@ -235,29 +242,48 @@ export default {
 
     onPlusBlood(blood) {
       // if (this.hits % 2 != 0) {
+      if (this.player.userHeart >= 100) {
+        return false;
+      } else {
+        this.player.userHeart += blood;
         if (this.player.userHeart >= 100) {
-          return false;
-        } else {
-          this.player.userHeart += blood;
-          if (this.player.userHeart >= 100) {
-            this.player.userHeart = 100;
-          }
+          this.player.userHeart = 100;
         }
+      }
       // }
     },
 
     onMinusBloodBot(damage) {
-      // if (this.hits % 2 == 0) {
       this.bot.botHeart -= damage;
-      console.log(damage);
-      console.log(this.bot.botHeartmage);
-      // }
+      // if (this.hits % 2 == 0) {
+      if (this.bot.botHeart <= 0) {
+        this.winer.name = this.infPlayersSettings.userName;
+        this.bot.botHeart = 0;
+        setTimeout(() => {
+          this.endGame();
+        }, 2000);
+        return false;
+      }
     },
 
     onMinusBloodPlayer(damage) {
       this.player.userHeart -= damage;
-      console.log(damage);
-      console.log(this.player.userHeart);
+
+      if (this.player.userHeart <= 0) {
+        this.winer.name = this.infBotSettings.botName;
+        this.player.userHeart = 0;
+        // setTimeout(() => {
+        this.endGame();
+        // },2000)
+        return false;
+      }
+    },
+
+    endGame() {
+      this.$emit("onEndGame", {
+        infWiner: this.winer,
+        timeGame: this.timeClock,
+      });
     },
 
     randomDamage(da1, da2) {

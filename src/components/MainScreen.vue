@@ -1,7 +1,7 @@
 <template>
   <div class="screen">
     <h1>CUỘC CHIẾN GIỮA CÁC VÌ SAO</h1>
-    <form class="formInf" action="" @submit.prevent >
+    <form class="formInf" action="" @submit.prevent>
       <div class="formInf__box formInf__name">
         <h3>Nhập tên của bạn</h3>
         <input
@@ -109,10 +109,10 @@ export default {
 }
 
 .screen .formInf {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .screen .formInf .formInf__box {
@@ -139,8 +139,8 @@ export default {
   padding: 5px;
 }
 
-.screen .formInf .formInf__levels{
-    margin-bottom: 20px;
+.screen .formInf .formInf__levels {
+  margin-bottom: 20px;
 }
 
 .screen .formInf .formInf__levels h3 {
@@ -149,59 +149,56 @@ export default {
   margin-bottom: 5px;
 }
 
-.screen .formInf .formInf__levels .formInf__levels__radio ul{
-    list-style-type: none;
-    display:  flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+.screen .formInf .formInf__levels .formInf__levels__radio ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .screen .formInf .formInf__levels .formInf__levels__radio ul > li {
-    margin-right:  10px;
-    font-size: 1.5rem;
+  margin-right: 10px;
+  font-size: 1.5rem;
 }
 
 .screen .formInf .formInf__levels .formInf__levels__radio ul > li label,
 .screen .formInf .formInf__levels .formInf__levels__radio ul > li input {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.screen .formInf .formInf__levels .formInf__levels__radio ul > li label{
-    color: #c5e9c4;
+.screen .formInf .formInf__levels .formInf__levels__radio ul > li label {
+  color: #c5e9c4;
 }
 
-.screen .formInf .formInf__levels .formInf__levels__radio ul > li input{
-    margin-right: 5px;
+.screen .formInf .formInf__levels .formInf__levels__radio ul > li input {
+  margin-right: 5px;
 }
 
 .screen .formInf input[name="submitForm"] {
-    /* text-align: center; */
-    padding: 12px 15px;
-    font-size: 1.1rem;
-    color: var(--light);
-    border-radius: 15px;
-    border: 2px solid var(--green);
-    background: none;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
+  /* text-align: center; */
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  color: var(--light);
+  border-radius: 15px;
+  border: 2px solid var(--green);
+  background: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .screen .formInf input[name="submitForm"]:hover {
-    background-color: var(--green);
-    color: var(--dark);
+  background-color: var(--green);
+  color: var(--dark);
 }
 
-.screen .formInf input[name="submitForm"]:disabled{
-    border-color:  rgba(65, 184, 131,0.5);
-    color: rgba(243, 243, 243,0.5);   
+.screen .formInf input[name="submitForm"]:disabled {
+  border-color: rgba(65, 184, 131, 0.5);
+  color: rgba(243, 243, 243, 0.5);
 }
 
-.screen .formInf input[name="submitForm"]:disabled:hover{
-    background: none;
-    color:rgba(243, 243, 243,0.5) ;
+.screen .formInf input[name="submitForm"]:disabled:hover {
+  background: none;
+  color: rgba(243, 243, 243, 0.5);
 }
-
-
-
 </style>
